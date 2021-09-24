@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Country>
+
+@{
+    ViewData["Title"] = ViewBag.Country;
+}
+
+<h1>@ViewBag.Country</h1>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <p><b>Назва:</b> @item.Name</p>-
+        </div>
+    </div>
+}
+<form method="get" asp-action="Index">
+    <input type="submit" class="btn btn-primary" value="Назад до списку" />
+</form>

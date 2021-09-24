@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Game>
+
+@{
+    ViewData["Title"] = ViewBag.Developer;
+}
+
+<h1>@ViewBag.Developer</h1>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <p><b>Назва:</b> @item.Name</p>
+            <p><b>Вартість:</b> @item.Price</p>
+            <p><b>Опис</b></p>
+            <p>@item.Description</p>
+        </div>
+    </div>
+}
+<form method="get" asp-action="Index">
+    <input type="submit" class="btn btn-primary" value="Назад до списку" />
+</form>

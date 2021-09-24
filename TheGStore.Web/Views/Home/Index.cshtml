@@ -1,0 +1,57 @@
+﻿@{ ViewData["Title"] = "Головна"; }
+<br />
+<br />
+<br />
+<br />
+
+<div class="text-center">
+    <h1 class="display-4">The Grassman's Store</h1>
+    <p style="font-size: 24px">Купи - не пожалеешь</p>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <form class="col-4" method="get" asp-controller="Developers" asp-action="Index">
+        <p align="center">
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Розробники" />
+        </p>
+    </form>
+
+    <form class="col-4" method="get" asp-controller="Games" asp-action="Index" asp-route-id="0">
+        <p align="center">
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Ігри" />
+        </p>
+    </form>
+
+    <form class="col-4" method="get" asp-controller="Customers" asp-action="Index">
+        <p align="center">
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Покупці" />
+        </p>
+    </form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+
+    <form class="col-4" method="get" asp-controller="Orders" asp-action="Index" asp-route-id="0">
+        <p align="center">
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Покупки" />
+        </p>
+    </form>
+
+    <form class="col-4" method="get" asp-controller="Countries" asp-action="Index">
+        <p align="center">
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Країни" />
+        </p>
+    </form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+
