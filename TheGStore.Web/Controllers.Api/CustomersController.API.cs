@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Http;
 namespace TheGStore.Controllers.Api
 {
     [ApiController]
-    [Route("customers")]
+    [Route("/api/customers")]
 
-    public class CustomersController : Controller
+    public class CustomersApiController : Controller
     {
         private readonly ICustomerManager _customerManager;
 
-        public CustomersController(ICustomerManager customerManager)
+        public CustomersApiController(ICustomerManager customerManager)
         {
             _customerManager = customerManager;
         }

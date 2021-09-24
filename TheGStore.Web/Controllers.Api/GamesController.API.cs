@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Http;
 namespace TheGStore.Controllers.Api
 {
     [ApiController]
-    [Route("games")]
+    [Route("/api/games")]
 
-    public class GamesController : Controller
+    public class GamesApiController : Controller
     {
         private readonly IGameManager _gameManager;
 
-        public GamesController(IGameManager gameManager)
+        public GamesApiController(IGameManager gameManager)
         {
             _gameManager = gameManager;
         }

@@ -28,7 +28,7 @@ namespace TheGStore
         {
             services.AddBllManagers();
 
-            services.AddDbContext<TheGStoreDbContext>(options => 
+            services.AddDbContext<TheGStoreDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
@@ -39,21 +39,15 @@ namespace TheGStore
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "TheGStore");
-                    c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
-                });
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
+                c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "TheGStore");
+                c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

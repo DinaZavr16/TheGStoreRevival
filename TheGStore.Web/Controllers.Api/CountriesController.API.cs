@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Http;
 namespace TheGStore.Controllers.Api
 {
     [ApiController]
-    [Route("countries")]
-    public class CountriesController : Controller
+    [Route("/api/countries")]
+    public class CountriesApiController : Controller
     {
         private readonly ICountryManager _countryManager;
 
-        public CountriesController(ICountryManager countryManager)
+        public CountriesApiController(ICountryManager countryManager)
         {
             _countryManager = countryManager;
         }

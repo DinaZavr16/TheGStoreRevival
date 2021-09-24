@@ -13,7 +13,7 @@ using Waresoft;
 
 namespace Waresoft.Controllers
 {
-    public partial class DevelopersController : Controller
+    public class DevelopersController : Controller
     {
         private readonly TheGStoreDbContext _context;
 

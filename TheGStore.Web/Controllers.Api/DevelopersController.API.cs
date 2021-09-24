@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Http;
 namespace Waresoft.Controllers.Api
 {
     [ApiController]
-    [Route("developers")]
+    [Route("/api/developers")]
 
-    public class DevelopersController : Controller
+    public class DevelopersApiController : Controller
     {
         private readonly IDeveloperManager _developerManager;
 
-        public DevelopersController(IDeveloperManager devManager)
+        public DevelopersApiController(IDeveloperManager devManager)
         {
             _developerManager = devManager;
         }

@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Http;
 namespace TheGStore.Controllers.Api
 {
     [ApiController]
-    [Route("orders")]
+    [Route("/api/orders")]
 
-    public partial class OrdersController : Controller
+    public partial class OrdersApiController : Controller
     {
         private readonly IOrderManager _orderManager;
 
-        public OrdersController(IOrderManager orderManager)
+        public OrdersApiController(IOrderManager orderManager)
         {
             _orderManager = orderManager;
         }

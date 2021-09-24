@@ -6,7 +6,7 @@ using TheGStore.DAL;
 
 namespace TheGStore.Controllers
 {
-    public partial class CustomersController : Controller
+    public class CustomersController : Controller
     {
         private readonly TheGStoreDbContext _context;
 
