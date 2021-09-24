@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Customer>
 
 @{
-    ViewData["Title"] = "Покупці";
+    ViewData["Title"] = "Customers";
 }
 
-<h1>Покупці</h1>
+<h1>Customers</h1>
 
 <table class="table">
     <thead>
@@ -35,7 +35,7 @@
             </td>
             <td>
                 <form method="get" asp-controller="Orders" asp-action="Index" asp-route-id="@item.Id">
-                    <input type="submit" class="btn btn-primary" value="Список покупок" />
+                    <input type="submit" class="btn btn-primary" value="List of purchases" />
                 </form>
             </td>
         </tr>
@@ -44,5 +44,5 @@
 </table>
 
 <form method="get" asp-controller="Home" asp-action="Index">
-    <input type="submit" class="btn btn-primary" value="На головну" />
+    <input type="submit" class="btn btn-primary" value="Home" />
 </form>

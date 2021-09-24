@@ -1,10 +1,10 @@
 ﻿@model Country
 
 @{
-    ViewData["Title"] = "Редагування";
+    ViewData["Title"] = "Edit";
 }
 
-<h4>Редагувати Країну</h4>
+<h4>Edit</h4>
 <hr />
 
 <div class="row">
@@ -22,17 +22,17 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Попередження</h5>
+                            <h5 class="modal-title">Attention!</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body delete-modal-body">
-                            Ви впевнені, що хочете зберегти внесені зміни?
+                            Save data?
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger" onclick="yes()">Так</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ні</button>
+                            <button type="submit" class="btn btn-success" onclick="yes()">Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
     <tr>
         <td>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirm">
-                Зберегти
+                Save
             </button>
         </td>
         <td></td>
@@ -53,7 +53,7 @@
         <td></td>
         <td>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#confirmBack">
-                Назад до списку
+               Back to list
             </button>
         </td>
     </tr>
@@ -64,17 +64,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Попередження</h5>
+                    <h5 class="modal-title">Attention!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body delete-modal-body">
-                    Ви впевнені, що хочете повернутися до списку? Незбережені зміни будуть втрачені.
+                    Unsaved data will not be saved! Proceed?
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">Так</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ні</button>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                 </div>
             </div>
         </div>

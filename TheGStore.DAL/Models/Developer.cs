@@ -11,13 +11,13 @@ namespace TheGStore.DAL.Models
             Games = new HashSet<Game>();
         }
 
-        [Display(Name = "Країна")]
+        [Display(Name = "Country")]
         public int CountryId { get; set; }
 
-        [Display(Name = "Ім\'я")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Країна")]
+        [Display(Name = "Country")]
         public virtual Country Country { get; set; }
 
         public virtual ICollection<Game> Games { get; set; }

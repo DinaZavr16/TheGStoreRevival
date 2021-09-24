@@ -1,17 +1,18 @@
 ﻿@model Game
 
 @{
-    ViewData["Title"] = "Додати Гру";
+    ViewData["Title"] = "Add";
 }
 
-<h4 id="test">Додати Гру</h4>
+<h4 id="test">Add</h4>
 <hr />
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" novalidate>
+        <form asp-action="Create" enctype="multipart/form-data">
             <input type="hidden" name="flag" value="0" />
             <input type="hidden" name="devId" value="@ViewBag.DevId" />
+            <input type="hidden" asp-for="Icon" value="ImageFile.FileName" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="DeveloperId" class="control-label"></label>
@@ -32,17 +33,22 @@
                 <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
             <table>
                 <tr>
                     <td>
-                        <input type="submit" value="Додати" class="btn btn-success" />
+                        <input type="submit" value="Add" class="btn btn-success" />
                     </td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#confirm">
-                            Назад до списку
+                            Back to list
                         </button>
                     </td>
                 </tr>
@@ -56,17 +62,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Попередження</h5>
+                    <h5 class="modal-title">Attention!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body delete-modal-body">
-                    Ви впевнені, що хочете повернутися до списку? Незбережені дані будуть втрачені.
+                    Unsaved data will be lost! Proceed?
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">Так</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ні</button>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                 </div>
             </div>
         </div>

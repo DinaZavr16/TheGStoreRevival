@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<Order>
 
 @{
-    ViewData["Title"] = "Покупки";
+    ViewData["Title"] = "Orders";
 }
 
 @if (ViewBag.CustomerId == 0)
 {
-    <h1>Покупки</h1>
+    <h1>Orders</h1>
 }
 else
 {
-    <h1>Покупки @ViewBag.Customer</h1>
+    <h1>Orders @ViewBag.Customer</h1>
 }
 
 <table class="table">
@@ -19,14 +19,14 @@ else
             @if (ViewBag.CustomerId == 0)
             {
                 <th>
-                    Email покупця
+                    Email
                 </th>
             }
             <th>
-                Назва продукту
+                Name
             </th>
             <th>
-                Розробник продукту
+               Developer
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
@@ -63,7 +63,7 @@ else
         {
             <td>
                 <form method="get" asp-controller="Customers" asp-action="Index">
-                    <input type="submit" class="btn btn-primary" value="Назад до списку покупців" />
+                    <input type="submit" class="btn btn-primary" value="Back to list of customers" />
                 </form>
             </td>
         <td></td>
@@ -72,7 +72,7 @@ else
         }
         <td>
             <form method="get" asp-controller="Home" asp-action="Index">
-                <input type="submit" class="btn btn-primary" value="На головну" />
+                <input type="submit" class="btn btn-primary" value="Home" />
             </form>
         </td>
     </tr>

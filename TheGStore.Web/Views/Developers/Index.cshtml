@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Developer>
 
 @{
-    ViewData["Title"] = "Розробники";
+    ViewData["Title"] = "Developers";
 }
 
-<h1>Розробники</h1>
+<h1>Developers</h1>
 
 <table class="table">
     <thead>
@@ -33,13 +33,13 @@
                 <td>
                     <div class="btn-toolbar">
                         <form method="get" asp-controller="Games" asp-action="Index" asp-route-id="@item.Id">
-                            <input type="submit" class="btn btn-primary mr-2" value="Список продуктів" />
+                            <input type="submit" class="btn btn-primary mr-2" value="List of games" />
                         </form>
                         <form method="get" asp-action="Edit" asp-route-id="@item.Id">
-                            <input type="submit" class="btn btn-warning mr-2" value="Редагувати" />
+                            <input type="submit" class="btn btn-warning mr-2" value="Edit" />
                         </form>
                         <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="@targetId">
-                            Видалити
+                            Delete
                         </button>
                     </div>
 
@@ -47,18 +47,18 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Попередження</h5>
+                                    <h5 class="modal-title">Attention!</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body delete-modal-body">
-                                    Ви впевнені, що хочете видалити цього розробника?
+                                    Delete?
                                 </div>
                                 <div class="modal-footer">
                                     <form asp-action="Delete" asp-route-id="@item.Id">
-                                        <button type="submit" class="btn btn-danger">Так</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ні</button>
+                                        <button type="submit" class="btn btn-danger">Yes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                                     </form>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
     <tr>
         <td>
             <form method="get" asp-action="Create">
-                <input type="submit" class="btn btn-success" value="Додати нового" />
+                <input type="submit" class="btn btn-success" value="Add new" />
             </form>
         </td>
         <td></td>
@@ -82,7 +82,7 @@
         <td></td>
         <td>
             <form method="get" asp-controller="Home" asp-action="Index">
-                <input type="submit" class="btn btn-primary" value="На головну" />
+                <input type="submit" class="btn btn-primary" value="Home" />
             </form>
         </td>
     </tr>

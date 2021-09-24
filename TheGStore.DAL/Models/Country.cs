@@ -13,7 +13,7 @@ namespace TheGStore.DAL.Models
             Developers = new HashSet<Developer>();
         }
 
-        [Display(Name = "Назва")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
 
         public virtual ICollection<Developer> Developers { get; set; }

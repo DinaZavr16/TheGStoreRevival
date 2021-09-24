@@ -14,28 +14,29 @@ namespace TheGStore.DAL.Models
             Orders = new HashSet<Order>();
         }
 
-        [NotMapped]
-        [Required]
-        [DisplayName("Загрузити зображення")]
-        public IFormFile ImageFile { get; set; }
-
-        [Required]
-        public string Icon { get; set; }
-
-        [Display(Name = "Назва")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Вартість")]
+        [Display(Name = "Price")]
         public decimal Price { get; set; }
 
-        [Display(Name = "Розробник")]
+        [Display(Name = "Developer")]
         public int DeveloperId { get; set; }
 
-        [Display(Name = "Опис")]
+        [Display(Name = "Description")]
         public string Description { get; set; }
 
-        [Display(Name = "Розробник")]
+        [Display(Name = "Developer")]
         public virtual Developer Developer { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+
+        [Required]
+        [DisplayName("Icon")]
+        public string Icon { get; set; }
+
+        [NotMapped]
+        [Required]
+        [DisplayName("Upload image")]
+        public IFormFile ImageFile { get; set; }
     }
 }

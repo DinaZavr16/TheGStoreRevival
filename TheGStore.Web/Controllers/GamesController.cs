@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,16 +11,19 @@ using TheGStore;
 using TheGStore.BLL.Models;
 using TheGStore.DAL;
 using TheGStore.DAL.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace TheGStore.Controllers
 {
     public class GamesController : Controller
     {
         private readonly TheGStoreDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public GamesController(TheGStoreDbContext context)
+        public GamesController(TheGStoreDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Software
@@ -80,6 +85,29 @@ namespace TheGStore.Controllers
             {
                 ModelState.AddModelError("Name", Resourses.ERROR_GameExists);
             }
+            string wwwrootPath = _hostEnvironment.WebRootPath;
+            if (game.ImageFile == null)
+            {
+                string fileName = "Disc";
+                string extension = ".png";
+                game.Icon = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwrootPath + "/Image/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await game.ImageFile.CopyToAsync(fileStream);
+                }
+            }
+            if (game.ImageFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(game.ImageFile.FileName);
+                string extension = Path.GetExtension(game.ImageFile.FileName);
+                game.Icon = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwrootPath + "/Image/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await game.ImageFile.CopyToAsync(fileStream);
+                }
+            }
 
             if (ModelState.IsValid)
             {
@@ -115,6 +143,23 @@ namespace TheGStore.Controllers
             if (duplicate)
             {
                 ModelState.AddModelError("Name", Resourses.ERROR_GameExists);
+            }
+
+            if (game.ImageFile != null)
+            {
+                var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "Image", game.Icon);
+                if (System.IO.File.Exists(imagePath))
+                    System.IO.File.Delete(imagePath);
+
+                string wwwrootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(game.ImageFile.FileName);
+                string extension = Path.GetExtension(game.ImageFile.FileName);
+                game.Icon = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwrootPath + "/Image/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await game.ImageFile.CopyToAsync(fileStream);
+                }
             }
 
             if (ModelState.IsValid)

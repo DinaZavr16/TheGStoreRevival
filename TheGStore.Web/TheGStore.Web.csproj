@@ -17,6 +17,10 @@
     <ProjectReference Include="..\TheGStore.BLL\TheGStore.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Image\" />
+  </ItemGroup>
+
 
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿@model Country
 
 @{
-    ViewData["Title"] = "Додати Країну";
+    ViewData["Title"] = "Add Country";
 }
 
 <h4>Додати Країну</h4>
@@ -19,14 +19,14 @@
             <table>
                 <tr>
                     <td>
-                        <input type="submit" value="Додати" class="btn btn-success" />
+                        <input type="submit" value="Add" class="btn btn-success" />
                     </td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
                         <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#confirm">
-                            Назад до списку
+                            Back to list
                         </button>
                     </td>
                 </tr>
@@ -40,17 +40,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Попередження</h5>
+                    <h5 class="modal-title">Attention!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body delete-modal-body">
-                    Ви впевнені, що хочете повернутися до списку? Незбережені дані будуть втрачені.
+                    Are you sure you want to proceed?
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">Так</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ні</button>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                 </div>
             </div>
         </div>

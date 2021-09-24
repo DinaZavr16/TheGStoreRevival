@@ -1,4 +1,4 @@
-﻿@{ ViewData["Title"] = "Головна"; }
+﻿@{ ViewData["Title"] = "Home"; }
 <br />
 <br />
 <br />
@@ -6,7 +6,7 @@
 
 <div class="text-center">
     <h1 class="display-4">The Grassman's Store</h1>
-    <p style="font-size: 24px">Купи - не пожалеешь</p>
+    <p style="font-size: 24px">You should buy!</p>
 </div>
 <br />
 <br />
@@ -17,19 +17,19 @@
 <div class="row">
     <form class="col-4" method="get" asp-controller="Developers" asp-action="Index">
         <p align="center">
-            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Розробники" />
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Developers" />
         </p>
     </form>
 
     <form class="col-4" method="get" asp-controller="Games" asp-action="Index" asp-route-id="0">
         <p align="center">
-            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Ігри" />
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Games" />
         </p>
     </form>
 
     <form class="col-4" method="get" asp-controller="Customers" asp-action="Index">
         <p align="center">
-            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Покупці" />
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Customers" />
         </p>
     </form>
     <br/>
@@ -40,13 +40,13 @@
 
     <form class="col-4" method="get" asp-controller="Orders" asp-action="Index" asp-route-id="0">
         <p align="center">
-            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Покупки" />
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Orders" />
         </p>
     </form>
 
     <form class="col-4" method="get" asp-controller="Countries" asp-action="Index">
         <p align="center">
-            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Країни" />
+            <input type="submit" class="btn btn-primary btn-lg" style="width: 100%" value="Countries" />
         </p>
     </form>
     <br/>

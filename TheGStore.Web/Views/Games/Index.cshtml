@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<Game>
 
 @{
-    ViewData["Title"] = "Продукти";
+    ViewData["Title"] = "Games";
 }
 
 @if (ViewBag.DevId == 0)
 {
-    <h1>Ігри</h1>
+<h1>Games</h1>
 }
 else
 {
-    <h1>Ігри @ViewBag.Developer</h1>
+    <h1>Games @ViewBag.Developer</h1>
 }
 
 
@@ -25,6 +25,9 @@ else
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icon)
             </th>
             @if (ViewBag.DevId == 0)
             {
@@ -49,6 +52,9 @@ else
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
+                <td>
+                    <img src="@("~/Image/" + item.Icon)" asp-append-version="true" width="50" height="50" />
+                </td>
                 @if (ViewBag.DevId == 0)
                 {
                     <td>
@@ -60,18 +66,18 @@ else
                         <input type="hidden" name="gameId" value="@item.Id" />
                         <input type="hidden" name="devId" value="@item.DeveloperId" />
                         <p>
-                            <input type="submit" class="btn btn-success" value="Придбати" style="width:100px" />
+                            <input type="submit" class="btn btn-success" value="Buy" style="width:100px" />
                         </p>
                     </form>
                     <form method="get" asp-action="Edit" asp-route-id="@item.Id">
                         <p>
                             <input type="hidden" name="devId" value="@ViewBag.DevId" />
-                            <input type="submit" class="btn btn-warning" value="Редагувати" style="width:100px" />
+                            <input type="submit" class="btn btn-warning" value="Edit" style="width:100px" />
                         </p>
                     </form>
                     <p>
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="@targetId" style="width:100px">
-                            Видалити
+                            Delete
                         </button>
                     </p>
 
@@ -79,18 +85,18 @@ else
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Попередження</h5>
+                                    <h5 class="modal-title">Attention!</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body delete-modal-body">
-                                    Ви впевнені, що хочете видалити цей продукт?
+                                    Are you sure?
                                 </div>
                                 <div class="modal-footer">
                                     <form asp-action="Delete" asp-route-id="@item.Id">
-                                        <button type="submit" class="btn btn-danger">Так</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ні</button>
+                                        <button type="submit" class="btn btn-danger">Yes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                                     </form>
                                 </div>
                             </div>
@@ -107,7 +113,7 @@ else
         <td>
             <form method="get" asp-action="Create">
                 <input type="hidden" name="devId" value="@ViewBag.DevId" />
-                <input type="submit" class="btn btn-success" value="Додати нову" />
+                <input type="submit" class="btn btn-success" value="Add" />
             </form>
         </td>
         @if (ViewBag.DevId != 0)
@@ -117,7 +123,7 @@ else
             <td></td>
             <td>
                 <form method="get" asp-controller="Countries" asp-action="Index">
-                    <input type="submit" class="btn btn-primary" value="Назад до списку розробників" />
+                    <input type="submit" class="btn btn-primary" value="Back to developer's list" />
                 </form>
             </td>
         }
@@ -126,7 +132,7 @@ else
         <td></td>
         <td>
             <form method="get" asp-controller="Home" asp-action="Index">
-                <input type="submit" class="btn btn-primary" value="На головну" />
+                <input type="submit" class="btn btn-primary" value="Home" />
             </form>
         </td>
     </tr>
@@ -136,13 +142,13 @@ else
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Повідомлення</h5>
+                <h5 class="modal-title">Notification!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body" id="errorText">
-                Успішно куплено!
+               Purchased successful!
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">ОК</button>

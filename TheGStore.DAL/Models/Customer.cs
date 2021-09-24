@@ -11,10 +11,10 @@ namespace TheGStore.DAL.Models
             Orders = new HashSet<Order>();
         }
 
-        [Display(Name = "Ім\'я")]
+        [Display(Name = "Name")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Прізвище")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Display(Name = "Email")]
