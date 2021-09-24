@@ -12,7 +12,7 @@ using TheGStore.DAL.Models;
 
 namespace TheGStore.Controllers
 {
-    public class GamesController : Controller
+    public partial class GamesController : Controller
     {
         private readonly TheGStoreDbContext _context;
 

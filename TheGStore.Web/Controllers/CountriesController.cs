@@ -12,7 +12,7 @@ using TheGStore.BLL.Models;
 
 namespace TheGStore.Controllers
 {
-    public class CountriesController : Controller
+    public partial class CountriesController : Controller
     {
         private readonly TheGStoreDbContext _context;
 
