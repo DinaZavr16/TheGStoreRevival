@@ -6,12 +6,12 @@ using TheGStore.Helpers;
 using TheGStore.PagedList;
 using Microsoft.AspNetCore.Http;
 
-namespace Waresoft.Controllers
+namespace Waresoft.Controllers.Api
 {
     [ApiController]
     [Route("developers")]
 
-    public partial class DevelopersController 
+    public class DevelopersController : Controller
     {
         private readonly IDeveloperManager _developerManager;
 

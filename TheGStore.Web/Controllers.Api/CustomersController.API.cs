@@ -6,12 +6,12 @@ using TheGStore.Helpers;
 using TheGStore.PagedList;
 using Microsoft.AspNetCore.Http;
 
-namespace TheGStore.Controllers
+namespace TheGStore.Controllers.Api
 {
     [ApiController]
     [Route("customers")]
 
-    public partial class CustomersController
+    public class CustomersController : Controller
     {
         private readonly ICustomerManager _customerManager;
 

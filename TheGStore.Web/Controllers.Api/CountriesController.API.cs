@@ -6,11 +6,11 @@ using TheGStore.Helpers;
 using TheGStore.PagedList;
 using Microsoft.AspNetCore.Http;
 
-namespace TheGStore.Controllers
+namespace TheGStore.Controllers.Api
 {
     [ApiController]
     [Route("countries")]
-    public partial class CountriesController
+    public class CountriesController : Controller
     {
         private readonly ICountryManager _countryManager;
 

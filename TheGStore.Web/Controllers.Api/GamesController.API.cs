@@ -6,12 +6,12 @@ using TheGStore.Helpers;
 using TheGStore.PagedList;
 using Microsoft.AspNetCore.Http;
 
-namespace TheGStore.Controllers
+namespace TheGStore.Controllers.Api
 {
     [ApiController]
     [Route("games")]
 
-    public partial class GamesController 
+    public class GamesController : Controller
     {
         private readonly IGameManager _gameManager;
 

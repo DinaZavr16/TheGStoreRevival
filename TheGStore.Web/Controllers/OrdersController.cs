@@ -11,7 +11,7 @@ using TheGStore.DAL.Models;
 
 namespace TheGStore.Controllers
 {
-    public partial class OrdersController : Controller
+    public class OrdersController : Controller
     {
         private readonly TheGStoreDbContext _context;
 
