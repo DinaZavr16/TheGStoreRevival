@@ -1,17 +1,13 @@
 ﻿@model IEnumerable<Game>
 
-@{
-    ViewData["Title"] = "Games";
-}
+@{ ViewData["Title"] = "Games"; }
 
 @if (ViewBag.DevId == 0)
 {
-<h1>Games</h1>
-}
-else
-{
-    <h1>Games @ViewBag.Developer</h1>
-}
+<h1>Games</h1> }
+            else
+            {
+<h1>Games @ViewBag.Developer</h1>}
 
 
 <table class="table">
@@ -31,10 +27,9 @@ else
             </th>
             @if (ViewBag.DevId == 0)
             {
-                <th>
-                    @Html.DisplayNameFor(model => model.Developer)
-                </th>
-            }
+<th>
+    @Html.DisplayNameFor(model => model.Developer)
+</th>            }
         </tr>
     </thead>
     <tbody>
@@ -42,69 +37,73 @@ else
         {
             var targetId = "#modal" + item.Id;
             var modalId = "modal" + item.Id;
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <img src="@("~/Image/" + item.Icon)" asp-append-version="true" width="50" height="50" />
-                </td>
-                @if (ViewBag.DevId == 0)
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Developer.Name)
-                    </td>
-                }
-                <td>
-                    <form method="get" asp-controller="Orders" asp-action="Purchase">
-                        <input type="hidden" name="gameId" value="@item.Id" />
-                        <input type="hidden" name="devId" value="@item.DeveloperId" />
-                        <p>
-                            <input type="submit" class="btn btn-success" value="Buy" style="width:100px" />
-                        </p>
-                    </form>
-                    <form method="get" asp-action="Edit" asp-route-id="@item.Id">
-                        <p>
-                            <input type="hidden" name="devId" value="@ViewBag.DevId" />
-                            <input type="submit" class="btn btn-warning" value="Edit" style="width:100px" />
-                        </p>
-                    </form>
-                    <p>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="@targetId" style="width:100px">
-                            Delete
-                        </button>
-                    </p>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        <img src="@("~/Image/" + item.Icon)" asp-append-version="true" width="50" height="50" />
+    </td>
+    @if (ViewBag.DevId == 0)
+    {
+<td>
+    @Html.DisplayFor(modelItem => item.Developer.Name)
+</td>                }
+<td>
+    <form method="get" asp-controller="Orders" asp-action="Purchase">
+        <input type="hidden" name="gameId" value="@item.Id" />
+        <input type="hidden" name="devId" value="@item.DeveloperId" />
+        <p>
+            <input type="submit" class="btn btn-success" value="Buy" style="width:100px" />
+        </p>
+    </form>
+    <form method="get" asp-action="Edit" asp-route-id="@item.Id">
+        <p>
+            <input type="hidden" name="devId" value="@ViewBag.DevId" />
+            <input type="submit" class="btn btn-warning" value="Edit" style="width:100px" />
+        </p>
+    </form>
+    <p>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="@targetId" style="width:100px">
+            Delete
+        </button>
+    </p>
+    <form method="get" asp-action="Detail" asp-route-id="@item.Id">
+        <p>
+            <input type="hidden" name="devId" value="@ViewBag.DevId" />
+            <input type="submit" class="btn btn-primary" value="Detail" style="width:100px" />
+        </p>
+    </form>
 
-                    <div class="modal fade" id="@modalId" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Attention!</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body delete-modal-body">
-                                    Are you sure?
-                                </div>
-                                <div class="modal-footer">
-                                    <form asp-action="Delete" asp-route-id="@item.Id">
-                                        <button type="submit" class="btn btn-danger">Yes</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        }
+    <div class="modal fade" id="@modalId" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body delete-modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <form asp-action="Delete" asp-route-id="@item.Id">
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>}
     </tbody>
 </table>
 
@@ -118,15 +117,14 @@ else
         </td>
         @if (ViewBag.DevId != 0)
         {
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <form method="get" asp-controller="Countries" asp-action="Index">
-                    <input type="submit" class="btn btn-primary" value="Back to developer's list" />
-                </form>
-            </td>
-        }
+<td></td>
+                <td></td>
+                                <td></td>
+                                                <td>
+                                                    <form method="get" asp-controller="Countries" asp-action="Index">
+                                                        <input type="submit" class="btn btn-primary" value="Back to developer's list" />
+                                                    </form>
+                                                </td>}
         <td></td>
         <td></td>
         <td></td>
@@ -148,7 +146,7 @@ else
                 </button>
             </div>
             <div class="modal-body" id="errorText">
-               Purchased successful!
+                Purchased successful!
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">ОК</button>

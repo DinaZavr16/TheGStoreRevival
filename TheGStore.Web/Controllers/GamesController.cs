@@ -130,6 +130,17 @@ namespace TheGStore.Controllers
             ViewBag.DeveloperList = new SelectList(_context.Developers, "Id", "Name", software.DeveloperId);
 
             return View(software);
+        } 
+
+        // GET: Software/Edit/5
+        public async Task<IActionResult> Detail(int id, int devId)
+        {
+            var software = await _context.Games.FindAsync(id);
+            ViewBag.DevId = devId;
+
+            ViewBag.DeveloperList = new SelectList(_context.Developers, "Id", "Name", software.DeveloperId);
+
+            return View(software);
         }
 
         // POST: Software/Edit/5
