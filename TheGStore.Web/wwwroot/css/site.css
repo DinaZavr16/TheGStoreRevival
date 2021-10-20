@@ -150,5 +150,11 @@ ul li a:hover::before {
     }
 }
 
+#map {
+    position: relative;
+    width: 80vh;
+    height: 80vh;
+}
+
 
 
