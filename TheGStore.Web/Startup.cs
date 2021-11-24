@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using TheGStore.DAL.Models;
 using TheGStore.DAL;
 using TheGStore.BLL.Extensions;
+using Microsoft.AspNetCore.Identity;
 
 namespace TheGStore
 {
@@ -30,7 +31,7 @@ namespace TheGStore
 
             services.AddDbContext<TheGStoreDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddAuth();
 
             services.AddControllers();
             services.AddControllersWithViews();

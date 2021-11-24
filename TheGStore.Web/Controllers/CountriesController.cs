@@ -1,36 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using TheGStore.DAL.Models;
-using TheGStore;
-using TheGStore.DAL;
-using TheGStore.BLL.Models;
+using TheGStore.BLL.Contracts;
+using TheGStore.Bll.Models;
 
 namespace TheGStore.Controllers
 {
     public class CountriesController : Controller
     {
-        private readonly TheGStoreDbContext _context;
+        private readonly ICountryManager _countryManager;
 
-        public CountriesController(TheGStoreDbContext context)
+        public CountriesController(ICountryManager countryManager)
         {
-            _context = context;
+            _countryManager = countryManager;
         }
 
         // GET: Games
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex, int pageSize)
         {
-            return View(await _context.Countries.ToListAsync());
+            return View(await _countryManager.GetList(pageIndex,pageSize));
         }
 
         // GET: Games/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            ViewBag.Country = _context.Countries.Find(id).Name;
+            ViewBag.Country = _countryManager.GetById(id);
             return View();
         }
 
@@ -43,21 +36,9 @@ namespace TheGStore.Controllers
         // POST: Games/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Country country)
+        public async Task<IActionResult> Create(CountryModel country)
         {
-            bool duplicate = await _context.Countries.AnyAsync(d => d.Name.Equals(country.Name));
-
-            if (duplicate)
-            {
-                ModelState.AddModelError("FirstName", Resourses.ERROR_CountryExists);
-            }
-
-            if (ModelState.IsValid)
-            {
-                _context.Add(country);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            await _countryManager.Create(country);
 
             return View(country);
         }
@@ -65,28 +46,16 @@ namespace TheGStore.Controllers
         // GET: Games/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var countries = await _context.Countries.FindAsync(id);
+            var countries = await _countryManager.GetById(id);
             return View(countries);
         }
 
         // POST: Games/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Country country)
+        public async Task<IActionResult> Edit(CountryUpdateModel country)
         {
-            bool duplicate = await _context.Countries.AnyAsync(d => d.Name.Equals(country.Name));
-
-            if (duplicate)
-            {
-                ModelState.AddModelError("FirstName", Resourses.ERROR_CountryExists);
-            }
-
-            if (ModelState.IsValid)
-            {
-                _context.Update(country);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            await _countryManager.Update(country);
 
             return View(country);
         }
@@ -96,9 +65,7 @@ namespace TheGStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var countries = await _context.Countries.FindAsync(id);
-            _context.Countries.Remove(countries);
-            await _context.SaveChangesAsync();
+            await _countryManager.Delete(id);
             return RedirectToAction(nameof(Index));
         }
     }

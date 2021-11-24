@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using TheGStore.DAL.Models;
 
 namespace TheGStore.DAL
 {
-    public class TheGStoreDbContext : DbContext
+    public class TheGStoreDbContext : IdentityDbContext
     {
         public IConfiguration Configuration { get; }
 
@@ -19,7 +20,6 @@ namespace TheGStore.DAL
         public virtual DbSet<Developer> Developers { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-
     
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
